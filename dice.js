@@ -10,6 +10,12 @@ var Dice = new Object(numFaces) {
 	}
 };
 
+var Result = new Object(){
+	this.say = function() {
+
+	}
+}
+
 function d6 = new Dice(6);
 function d20 = new Dice(20);
 
@@ -27,7 +33,7 @@ function rollXTimes(die, x) {
 var roll1000 = rollXTimes(d6, 1000);
 
 function countResults(rollsArray) {
-	var results = new Object();
+	var results = new Result();
 //~ if the current element of rollsArray is a key in results, add 1 to the value.
 //~ if not, create a new key in results and set the value to 1.
 	for (var i = 0; i < rollsArray.length; i++) {
@@ -49,5 +55,12 @@ function dieFight(dieA, dieB) {
 	else return 'tie'
 };
 
+function dieFightXTimes(dieA, dieB, qty) {
+	var rolls = new Array(qty);
+	for (var i = 0; i < qty; i++) {
+		rolls[i] = dieFight(dieA, dieB);
 
+	};
+	return countResults(rolls);
+};
 
